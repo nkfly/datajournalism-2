@@ -20,7 +20,6 @@ function mouseover(event){
 			candidate = d.properties.candidate[now_map];
 		});
 	//var centroid = this.centroid();
-	console.log(centroid[1])
 	var x = centroid[0]+rect.left;
 	var y = centroid[1]+$("#svg1").position().top ;
 	d3.select("#tooltip1")
@@ -190,13 +189,13 @@ function calculate_color(json){
 				}	
 			}
 			if(json.features[i].properties.party[j][max_index] == "中國國民黨"){
-				json.features[i].properties.color.push("blue");
+				json.features[i].properties.color.push("#55B2D6");
 			}
 			else if(json.features[i].properties.party[j][max_index] == "民主進步黨"){
 				json.features[i].properties.color.push("grean");
 			}
 			else{
-				json.features[i].properties.color.push("grey");
+				json.features[i].properties.color.push("#CBCCCC");
 			}
 		}
 	}
