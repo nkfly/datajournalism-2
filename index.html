@@ -23,19 +23,127 @@
 
 
     <!-- Li-Yuan Custom -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+            var now_map = 0;
+            // var play_bar = new Image();
+            //     play_bar.src = "play_bar.png";
+            var labels;
+    </script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="./map.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <style>
+        svg{
+            margin: 10px auto;
+        }
+        path {
+            stroke:white;
+            fill: grey;
+            stroke-width:1px;
+            opacity:1.0;
+        }   
+        .tooltip{
+            display:none;
+            position:absolute;  
+            width:200px;
+            height:140px;
+            border-radius:10px;
+                box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+            background:#DDD;
+        }
+        .button_list{
+            position:relative;
+            margin: 0px auto;   
+            height:50px;
+            width:800px;
+            text-align:center;
+            z-index:2;
+        }
+        .year_buttion{
+            margin: 0px auto;
+            width:155px;
+            height:50px;
+            display:inline-block;
+            background-color:orange;
+            font-size:35px;
+            color:white;
+            text-align:center;
+        }
+        .long_bar{
+            z-index:1;
+            margin: 0px auto;
+            position:relative;
+            top:45px;
+            height:20px;
+            width:600px;
+            display:block;
+            background-color:orange;
+        }
+        .bar_container{
+            height:30px;
+            width:400px;
+            position:relative;
+        }
+        .play_bar{
+                        z-index:1;
+                        margin: 0px auto;
+                        position:relative;
+            top:15px;
+                        height:5px;
+                        width:400px;
+                        display:block;
+                        background:#AAA;
+                }
+        .bar_container img{
+            position:relative;
+            z-index:3;
+        }
+        .axis path,
+        .axis line {
+            fill:none;  
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+        #article_container{
+            margin: 0px auto;
+            width:480px;
+            display:inline-block;
+            vertical-align:top;
+        }
+        .circle{
+            position:relative;
+            display:inline-block;
+            margin:0 auto;
+            margin-left:40px;
+            margin-right:40px;
+            width:70px;
+            height:70px;
+            border-radius:35px;
+            font-size:20px;
+            color:#FFF;
+            line-height:70px;
+            text-align:center;
+            background:#000;
+            z-index:3;
+            cursor:pointer;
+            -moz-user-select: none;  
+            -webkit-user-select: none;  
+            -ms-user-select: none; 
+
+        }
+    </style>
     <style>
     body {
         font-family:Microsoft JhengHei;
+        font-size:18px;
     }
     .banner {
         margin: 0px;
         background-color: #55B2D6;
         color: white;
         text-align: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
         font-size: 35px;
     }
     </style>
@@ -196,7 +304,7 @@
 
 
 <body style="padding:0px;border:0px;font-family:Microsoft JhengHei;font-size:18px">
-    <div class="container" style="width:100%;margin:0px;padding:0px;border:0px;">
+    <div class="container" style="width:100%;margin:0px;padding:0px;border:0px;position:relative;">
         <div id="smallman-graph" style="border:0px;padding:0px;margin:0px;position:relative;">
             <h2 style="margin-bottom:0px;color:#F6D500" class="banner">桃園市</h2>
             <h3 style="margin:0px;color:black;font-weight:bold;text-align:center;margin-top:0px;background-color:#55B2D6;padding:0px;border:0px;"><span >村里長大小事一把罩</span></h3>
@@ -230,14 +338,86 @@
             <iframe style="width:33%" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1o5xVMxh3P_UjLUVgrOHQP9ZzML__oRMlQw9b59Apg8g/pubchart?oid=2105014005&amp;format=interactive"></iframe>
         </div>
         <div style="text-align:center;">
-            <iframe style="vertical-align:top;"width="833" height="549" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1o5xVMxh3P_UjLUVgrOHQP9ZzML__oRMlQw9b59Apg8g/pubchart?oid=804179303&amp;format=interactive"></iframe>
-            <div style="width:28%;display:inline-block;text-align:left;padding-top:120px">
+            <iframe style="vertical-align:middle;"width="833" height="549" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1o5xVMxh3P_UjLUVgrOHQP9ZzML__oRMlQw9b59Apg8g/pubchart?oid=804179303&amp;format=interactive"></iframe>
+            <div style="width:28%;display:inline-block;text-align:left;padding-bottom:30px;">
                 里長同額競選中，民國79年時為國民黨籍的比例高達67%，而近年逐年下降。另外，同額競選近年有回升的趨勢，或與2006年前總統陳水扁涉嫌貪污，民眾對於政治失落或冷感有關。<br />
                 <br />
                 不過！如果要可以躺著一直選一直選一直選，政黨背景仍是重要的因素！連續三屆都同額競選、沒有任何競爭者的里長，有75%都曾背過國民黨黨籍！
             </div>
         </div>
+        <h2 style="margin-bottom:0px;" class="banner">桃園市里長原多為國民黨籍，但漸漸被無黨籍取代</h2>
+        <div style="text-align:center;">
+            <svg id="svg1" ></svg>
+            <div class="article_container" style="text-align:left" id="article_container">
+                <p style="font-size:30px;">桃園市歷年村里長政黨變化圖</p>
+                <p style="text-align:left;">
+                    左圖為民國79年到99年桃園縣各鄉鎮的村里長政黨多數比例圖，以該地區當年村里長當選人的多數政黨為顯示顏色，藍色代表國民黨，綠色代表民進黨，灰色代表無黨籍。
+                </p>
+                <button id="play">Play</button>
+                <button id="turn_left"> &lt;</button>
+                <button id="turn_right"> &gt;</button>
+                <div class="bar_container" id="bar_container">
+                    <div class="play_bar" id="play_bar">
+                    </div>
+                </div>
+                <div style="width:460px;position:relative;padding-bottom:30px;"id="label_container">
+                </div>
+            </div>
+        </div>
+        <h2 style="margin-bottom:0px;" class="banner">桃園市長的黨籍，與里長的黨籍並無直接關係</h2>
+        <div style="text-align:center;">
+            <img style="margin-top:30px;"src="./events.png"></img><br />
+            <img style="vertical-align:top;display:inline-block"src="./投票率.png"></img>
+            <div style="width:28%;display:inline-block;text-align:left;padding-bottom:30px;margin-left:30px;padding-top:100px;">
+                桃園市歷年來幾乎都是國民黨主政，除了民國85年的劉邦友血案後，民進黨提名的呂秀蓮補選當上縣長外，民國90年後都是國民黨籍候選人當選。<br />
+                村里長的有效投票率在民國91年最高，但當年只有復興鄉跟八德鄉兩個鄉的里長多為國民黨籍，其餘鄉鎮則多數為無黨籍。到民國95年，里長為無黨籍的比例更高。<br />
+                可推知，多數里長的黨籍與桃園市長的選舉並無直接關係。
+            </div>
+        </div>
+        
 
+    
+        
+        <script>
+            labels = ["y79","y83","y87","y91","y95","y99"];
+            var width = 600;
+            var height = 450;
+            var svg = d3.select("#svg1")
+                        .attr("width", width)
+                        .attr("height", height);
+            var prj = d3.geo.mercator().center([121.379531, 24.798567]).scale(35000);
+            var path = d3.geo.path()
+                        .projection(prj);
+            
+            var g = svg.append("g");
+            d3.csv('village_party.csv',function(csv){
+                d3.json("tu.5.json", function(json) {
+                    bind_data(json,csv);
+                    calculate_color(json);
+                        var map = svg.selectAll("path")
+                        .data(json.features)
+                        .enter()
+                        .append("path")
+                        .attr("d",path)
+                        .style("fill",function(d){
+                            return d.properties.color[0];
+                        });
+                
+                    svg.selectAll("path")
+                        .on("mouseover",mouseover)
+                        .on("mouseout",mouseout);       
+                    
+                    set_onclick(svg);
+                    set_player(svg);
+                });
+            });
+        </script>
+        <div class="tooltip" id="tooltip1" style="z-index:1000;">
+            <table border="0">
+                 <caption id="tooltip_captain" style="text-align:center;font-size:20px;"></caption>
+                <tbody id="tooltip_table"></tbody>
+            </table>
+        </div>
     </div>
 </body>
 
