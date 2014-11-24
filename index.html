@@ -157,7 +157,7 @@
     span.tooltipCustom {
         position: absolute;
         width: 150px;
-        height: 110px;
+        height: 80px;
         line-height: 20px;
         padding: 10px;
         font-size: 14px;
@@ -276,7 +276,7 @@
 
             function handler1(e) {
                 var x = mouseX;
-                var y = mouseY-70;
+                var y = mouseY-30;
                 var second = Math.round(parseFloat(theDataArray[e.row + 1][6]) * 10000) / 100;
                 if (!($('#custom_tooltip:visible').is(":visible"))) {
                     $('#custom_tooltip').html('<span class="tooltipCustom">五屆投票率:<br />' + theDataArray[e.row + 1][5] + '%<br />五屆同額競選比率:<br />' + second.toString() + '%' + '</span>').css({
@@ -314,17 +314,17 @@
             <h2 style="margin-bottom:0px;border:0px;" class="banner">城市越大 政治越冷感</h2>
         </div>
         <div id="custom_tooltip" style="position: absolute; z-index:1"></div>
-        <div sytle="width:100%">
-            <div id="chart_with_overlay" style="position: relative; width: 1000px; margin: 0 auto;">
-				<div style="width:800px; height:600px; background:#F2F2F2; margin: 0 auto;">
-					<div id="chart_div" style="width: 1000px; height: 830px; position: relative; top:-130px; left:-100px"></div>
-					<div style="position: absolute; left:115px; top:285px; font-size: 14px;">選民很冷感</div>
-					<div style="position: absolute; left:820px; top:285px; font-size: 14px;">選民很熱衷</div>
-					<div style="position: absolute; left:460px; top:558px; font-size: 14px;">候選人躺著選</div>
-					<div style="position: absolute; left:453px; top:15px; font-size: 14px;">候選人競爭激烈</div>
-					<div style="position: absolute; left:107px; top:440px; font-size: 14px;"><strong>鄉鎮人口數（人）</strong>
+        <div sytle="width:100%;">
+            <div id="chart_with_overlay" style="position: relative; width: 100%; margin: 0 auto;">
+				<div style="width:100%; height:600px; background:#F2F2F2; margin: 0 auto; overflow: hidden">
+					<div id="chart_div" style="width: 120%; height: 830px; position: relative; top:-130px; left:-10%;"></div>
+					<div style="position: absolute; left:4%; top:285px; font-size: 14px;">選民很冷感</div>
+					<div style="position: absolute; left:91%; top:285px; font-size: 14px;">選民很熱衷</div>
+					<div style="position: absolute; left:46.5%; top:558px; font-size: 14px;">候選人躺著選</div>
+					<div style="position: absolute; left:46%; top:15px; font-size: 14px;">候選人競爭激烈</div>
+					<div style="position: absolute; left:5%; top:435px; font-size: 14px;"><strong>鄉鎮人口數（人）</strong>
 					</div>
-					<img src="./populationLegend2.png" width="150" height="134" style="position: absolute; left:100px; top:460px"></img>
+					<img src="./populationLegend2.png" width="150" height="134" style="position: absolute; left:4%; top:460px"></img>
 				</div>
 			</div>
         </div>
