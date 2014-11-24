@@ -212,7 +212,7 @@
 
             var options = {
                 title: '',
-                backgroundColor: '#F2F2F2',
+                backgroundColor: 'transparent',
                 bubble: {
                     opacity: 0.7
                 },
@@ -315,16 +315,18 @@
         </div>
         <div id="custom_tooltip" style="position: absolute; z-index:1"></div>
         <div sytle="width:100%">
-            <div id="chart_with_overlay" style="position: relative; width: 800px; margin: 0 auto;">
-                <div id="chart_div" style="width: 800px; height: 600px;"></div>
-                <div style="position: absolute; left:80px; top:290px; font-size: 14px;">選民很冷感</div>
-                <div style="position: absolute; left:660px; top:290px; font-size: 14px;">選民很熱衷</div>
-                <div style="position: absolute; left:360px; top:490px; font-size: 14px;">候選人躺著選</div>
-                <div style="position: absolute; left:353px; top:90px; font-size: 14px;">候選人競爭激烈</div>
-                <div style="position: absolute; left:7px; top:440px; font-size: 14px;"><strong>鄉鎮人口數（人）</strong>
-                </div>
-                <img src="./populationLegend2.png" width="150" height="134" style="position: absolute; left:0px; top:460px"></img>
-            </div>
+            <div id="chart_with_overlay" style="position: relative; width: 1000px; margin: 0 auto;">
+				<div style="width:800px; height:600px; background:#F2F2F2; margin: 0 auto;">
+					<div id="chart_div" style="width: 1000px; height: 830px; position: relative; top:-130px; left:-100px"></div>
+					<div style="position: absolute; left:115px; top:285px; font-size: 14px;">選民很冷感</div>
+					<div style="position: absolute; left:820px; top:285px; font-size: 14px;">選民很熱衷</div>
+					<div style="position: absolute; left:460px; top:558px; font-size: 14px;">候選人躺著選</div>
+					<div style="position: absolute; left:453px; top:15px; font-size: 14px;">候選人競爭激烈</div>
+					<div style="position: absolute; left:107px; top:440px; font-size: 14px;"><strong>鄉鎮人口數（人）</strong>
+					</div>
+					<img src="./populationLegend2.png" width="150" height="134" style="position: absolute; left:100px; top:460px"></img>
+				</div>
+			</div>
         </div>
         <p style="font-size:18px;padding-left:20px;padding-right:20px;padding-bottom:30px;padding-top:30px;color:black;margin:0px;margin-bottom:10px;">
             人口數越多的鄉鎮市，無論是選民的投票率，或是候選人的競爭程度都很低。<br />
