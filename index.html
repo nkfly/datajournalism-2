@@ -276,7 +276,7 @@
 
             function handler1(e) {
                 var x = mouseX;
-                var y = mouseY;
+                var y = mouseY-70;
                 var second = Math.round(parseFloat(theDataArray[e.row + 1][6]) * 10000) / 100;
                 if (!($('#custom_tooltip:visible').is(":visible"))) {
                     $('#custom_tooltip').html('<span class="tooltipCustom">五屆投票率:<br />' + theDataArray[e.row + 1][5] + '%<br />五屆同額競選比率:<br />' + second.toString() + '%' + '</span>').css({
