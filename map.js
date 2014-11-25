@@ -25,7 +25,7 @@ function mouseover(event){
 	d3.select("#tooltip1")
 		.style("display","block")
 		.style("top",y+"px")
-		.style("left",(x-200-tooltip_line_length)+"px");
+		.style("left",(x+tooltip_line_length)+"px");
 	d3.select("#tooltip_captain")
 		.html(name);
 	d3.select("#tooltip_table")
